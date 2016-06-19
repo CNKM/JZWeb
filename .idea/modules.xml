@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/JZWeb.iml" filepath="$PROJECT_DIR$/.idea/JZWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrameWork/FrameWork.iml" filepath="$PROJECT_DIR$/FrameWork/FrameWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JZWeb.iml" filepath="$PROJECT_DIR$/JZWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Web/Web.iml" filepath="$PROJECT_DIR$/Web/Web.iml" />
     </modules>
   </component>
 </project>
