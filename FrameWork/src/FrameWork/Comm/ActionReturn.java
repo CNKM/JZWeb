@@ -1,33 +1,40 @@
 package FrameWork.Comm;
 
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
+
+import static java.util.Calendar.AM;
+
 /**
  * Created by XDAW on 2014-06-19.
  */
 public class ActionReturn {
 
-    Integer ActionReuslt;
-    String ActionMsg;
+    @JsonProperty
+    Integer R;
+    @JsonProperty
+    String M;
 
     public ActionReturn(Integer actionReuslt, String actionMsg) {
-        ActionReuslt = actionReuslt;
-        ActionMsg = actionMsg;
+        R = actionReuslt;
+        M = actionMsg;
     }
-
-    public Integer getActionReuslt() {
-        return ActionReuslt;
+    @JsonIgnore
+    public Integer getR() {
+        return R;
     }
-
-    public void setActionReuslt(Integer actionReuslt) {
-        ActionReuslt = actionReuslt;
+    @JsonIgnore
+    public void setR(Integer actionReuslt) {
+        R = actionReuslt;
     }
-
-    public String getActionMsg() {
-        return ActionMsg;
+    @JsonIgnore
+    public String getM() {
+        return M;
     }
-
-    public void setActionMsg(String actionMsg) {
-        ActionMsg = actionMsg;
+    @JsonIgnore
+    public void setM(String actionMsg) {
+        M = actionMsg;
     }
 
     @Override
