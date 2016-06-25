@@ -1,6 +1,7 @@
 package FrameWork.Comm.Helper;
 
 
+
 import java.io.*;
 import java.util.Properties;
 
@@ -22,15 +23,19 @@ public class StringHelper
         Properties properties = new Properties();
         try
         {
-            InputStream inputStream = new FileInputStream("WebConfig.xml");
+            String FilePath =WebInteractiveHelper.getServerWebInfPath()+"WebConfig.xml";
+            InputStream inputStream = new FileInputStream(FilePath);
             properties.loadFromXML(inputStream);
             inputStream.close();
         }
         catch (IOException e)
         {
             e.printStackTrace();
+        }finally
+        {
+            return properties.getProperty(EntryKey);
         }
-        return properties.getProperty(EntryKey);
+
     }
 
     //写资源文件到XML文件，含中文
@@ -39,7 +44,7 @@ public class StringHelper
         Properties properties = new Properties();
         try
         {
-            OutputStream outputStream = new FileOutputStream("WebConfig.xml");
+            OutputStream outputStream = new FileOutputStream(WebInteractiveHelper.getServerWebInfPath()+"WebConfig.xml");
             properties.setProperty(EntryKey, KeyValue);
             properties.storeToXML(outputStream, "Author: PhyosStudio");
             outputStream.close();

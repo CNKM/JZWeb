@@ -3,6 +3,7 @@ package FrameWork.DAL;
 
 
 import FrameWork.Comm.Helper.StringHelper;
+import FrameWork.Comm.Helper.WebInteractiveHelper;
 
 import java.sql.*;
 
@@ -120,13 +121,8 @@ public class DalHelper
             CurrentConnect = DriverManager.getConnection(this.ConnectString, this.DBUser, this.DBPassWord);
             if (CurrentConnect.isClosed())
             {
-                System.out.println("数据库链接失败");
+                throw new SQLClientInfoException();
             }
-            else
-            {
-                System.out.println("数据库链接成功");
-            }
-
         }
         catch (ClassNotFoundException e)
         {
@@ -141,11 +137,16 @@ public class DalHelper
     public DalHelper()
     {
 
-        this.DBURL = StringHelper.ReadWebConfig("DBURL");
-        this.DBName =StringHelper.ReadWebConfig("DBName");
-        this.DBUser =StringHelper.ReadWebConfig("DBUSER");
-        this.DBPassWord =StringHelper.ReadWebConfig("DBPWD");
+        String ServerPath=this.getClass().getResource("../../../../").getPath();
+        String ServerWebInf =this.getClass().getResource("../../../").getPath();
+        WebInteractiveHelper.setServerRootPath(ServerPath);
+        WebInteractiveHelper.setServerWebInfPath(ServerWebInf);
 
+        this.DBURL = StringHelper.ReadWebConfig("DBUrl");
+        this.DBName =StringHelper.ReadWebConfig("DBName");
+        this.DBUser =StringHelper.ReadWebConfig("DBUser");
+        this.DBPassWord =StringHelper.ReadWebConfig("DBPassword");
+        //this.DBType=DBTYPEENUM.valueOf(StringHelper.ReadWebConfig("DBType").toUpperCase());
         this.MakeConnectString(this.DBType);
     }
 
@@ -162,8 +163,9 @@ public class DalHelper
         catch (SQLException e)
         {
             e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 
 

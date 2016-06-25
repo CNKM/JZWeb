@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.ResultSet;
 
+import static com.sun.org.apache.xml.internal.serialize.LineSeparator.Web;
+
 
 /**
  * Created by xda on 16-6-20.
@@ -29,7 +31,6 @@ public class Login extends ServletBase
     {
         WebInteractiveHelper.ToResponseStr(res, new ActionReturn(0, "登陆成功").toString());
     }
-
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) throws IOException
@@ -50,9 +51,10 @@ public class Login extends ServletBase
         try
         {
 
+
             DalHelper DH = new DalHelper();
 
-            ResultSet RS = DH.ExecSQL("Select * From T_SYS_USERINFO");
+            ResultSet RS = DH.ExecSQL("Select * From T_UserInfo");
 
             if (Uname.equals("admin") && (Upwd.equals("admin")))
             {
@@ -66,8 +68,7 @@ public class Login extends ServletBase
         }
         catch (Exception e)
         {
-
-
+            e.printStackTrace();
         }
         finally
         {

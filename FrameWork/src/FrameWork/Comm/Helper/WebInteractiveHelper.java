@@ -11,7 +11,9 @@ import java.io.IOException;
 public class WebInteractiveHelper
 {
 
-    public static java.lang.String getServerRootPath()
+
+
+    public static String getServerRootPath()
     {
         return ServerRootPath;
     }
@@ -21,7 +23,19 @@ public class WebInteractiveHelper
         ServerRootPath = serverRootPath;
     }
 
-    static java.lang.String ServerRootPath;
+    static String ServerRootPath;
+
+    public static String getServerWebInfPath()
+    {
+        return ServerWebInfPath;
+    }
+
+    public static void setServerWebInfPath(String serverWebInfPath)
+    {
+        ServerWebInfPath = serverWebInfPath;
+    }
+
+    static  String ServerWebInfPath;
 
     public static String GetRequestParmeValue(HttpServletRequest req, String StrParmeName)
     {
