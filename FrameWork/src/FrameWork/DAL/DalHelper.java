@@ -1,5 +1,9 @@
 package FrameWork.DAL;
 
+
+
+import FrameWork.Comm.Helper.StringHelper;
+
 import java.sql.*;
 
 
@@ -12,11 +16,11 @@ public class DalHelper
     //数据库类型枚举
     public enum DBTYPEENUM
     {
-        SqlServer, MySQL, Oracl
+        SQLSERVER, MYSQL, ORACL
     }
 
 
-    private DBTYPEENUM DBType = DBTYPEENUM.MySQL;
+    private DBTYPEENUM DBType = DBTYPEENUM.MYSQL;
     private String DBDriver = "";
     private String DBName = "";
     private String DBUser = "";
@@ -97,15 +101,15 @@ public class DalHelper
         this.DBType = SYSDBTYPE;
         switch (this.DBType)
         {
-            case SqlServer:
+            case SQLSERVER:
                 this.DBDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
                 this.ConnectString = "jdbc:sqlserver://" + this.DBURL + ":1433";
                 break;
-            case MySQL:
+            case MYSQL:
                 this.DBDriver = "com.mysql.jdbc.Driver";
                 this.ConnectString = "jdbc:mysql://" + this.DBURL + "/" + this.DBName + "";
                 break;
-            case Oracl:
+            case ORACL:
                 this.DBDriver = "oracle.jdbc.driver.OracleDriver";
                 this.ConnectString = "jdbc:oracle:oci:@" + this.DBName;
                 break;
@@ -136,6 +140,12 @@ public class DalHelper
 
     public DalHelper()
     {
+
+        this.DBURL = StringHelper.ReadWebConfig("DBURL");
+        this.DBName =StringHelper.ReadWebConfig("DBName");
+        this.DBUser =StringHelper.ReadWebConfig("DBUSER");
+        this.DBPassWord =StringHelper.ReadWebConfig("DBPWD");
+
         this.MakeConnectString(this.DBType);
     }
 

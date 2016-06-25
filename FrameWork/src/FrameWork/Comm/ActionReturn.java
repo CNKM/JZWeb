@@ -1,10 +1,12 @@
 package FrameWork.Comm;
 
 
+import FrameWork.Comm.Helper.JsonHelper;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import static java.util.Calendar.AM;
+import static FrameWork.Comm.Helper.JsonHelper.ToJsonString;
+
 
 /**
  * Created by XDAW on 2014-06-19.
@@ -39,6 +41,6 @@ public class ActionReturn {
 
     @Override
     public String toString() {
-        return CommHelper.ToJsonString(this);
+        return JsonHelper.ToJsonString(this);
     }
 }

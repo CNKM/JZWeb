@@ -4,15 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
     <servlet>
         <servlet-name>UserLogin</servlet-name>
         <servlet-class>FrameWork.SYS.User.Login</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/UserLogin</url-pattern>
     </servlet-mapping>
+
 
     <jsp-config>
         <jsp-property-group>

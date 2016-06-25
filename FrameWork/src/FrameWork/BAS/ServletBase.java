@@ -1,14 +1,20 @@
-package FrameWork.Comm;
+package FrameWork.BAS;
+
+import com.sun.net.httpserver.HttpHandler;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
- * Created by xda on 16-6-19.
+ * Created by xda on 16-6-25.
  */
-public class CoreServletBase extends HttpServlet {
-    public void doAction(HttpServletRequest req, HttpServletResponse res) throws IOException {
+public class ServletBase extends HttpServlet
+{
+    public void doAction(HttpServletRequest req, HttpServletResponse res) throws IOException
+    {
 
     }
 

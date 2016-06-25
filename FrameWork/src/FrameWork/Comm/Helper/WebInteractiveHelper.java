@@ -1,53 +1,31 @@
-package FrameWork.Comm;
+package FrameWork.Comm.Helper;
 
-/**
- * Created by xda on 16-6-19.
- */
-
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by XDAW on 2014-06-17.
+ * Created by xda on 16-6-25.
  */
-public class CommHelper
+public class WebInteractiveHelper
 {
 
-    public static ObjectMapper JacksonOM;
-
-    static
+    public static java.lang.String getServerRootPath()
     {
-        JacksonOM = new ObjectMapper()
-        {
-        };
-        JacksonOM.configure(DeserializationConfig.Feature.READ_ENUMS_USING_TO_STRING,true);
+        return ServerRootPath;
     }
 
-    public static String ToJsonString(Object ToJsonStringObject)
+    public static void setServerRootPath(java.lang.String serverRootPath)
     {
-        try
-        {
-            return JacksonOM.writeValueAsString(ToJsonStringObject);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        return "error from object to json  string!";
+        ServerRootPath = serverRootPath;
     }
+
+    static java.lang.String ServerRootPath;
 
     public static String GetRequestParmeValue(HttpServletRequest req, String StrParmeName)
     {
         return req.getParameter(StrParmeName);
-    }
-
-    public static Boolean IsNullorEmpty(String str)
-    {
-        return str == null || str.trim().length() == 0;
     }
 
     public static void ToResponseStr(HttpServletResponse res, String StrValue) throws IOException
